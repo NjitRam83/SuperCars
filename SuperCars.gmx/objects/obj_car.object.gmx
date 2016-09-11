@@ -52,7 +52,22 @@ turnspeed = 5;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scr_collide_with_wall(self);
+            <string>//Blunt collision
+if(    (direction &gt; 315 || direction &lt; 45)
+    || (direction &gt; 135 &amp;&amp; direction &lt; 225))
+
+{
+    scr_collide_with_wall_blunt(self);          
+}
+
+
+//Sharp collision
+if(    (direction &gt;= 45 &amp;&amp; direction &lt;= 135)
+    || (direction &gt;= 225 &amp;&amp; direction &lt;= 315))
+{
+    direction = 180 - direction;
+    image_angle = direction;          
+}
 </string>
           </argument>
         </arguments>
@@ -75,7 +90,21 @@ turnspeed = 5;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scr_collide_with_wall(self);
+            <string>//Blunt collision
+if(    (direction &gt;= 45 &amp;&amp; direction &lt;= 135)
+    || (direction &gt;= 225 &amp;&amp; direction &lt;= 315))
+{
+    scr_collide_with_wall_blunt(self);          
+}
+
+
+//Sharp collision
+if(    (direction &gt; 315 || direction &lt; 45)
+    || (direction &gt; 135 &amp;&amp; direction &lt; 225))
+{
+    direction = 360 - direction;
+    image_angle = direction;          
+}
 </string>
           </argument>
         </arguments>
