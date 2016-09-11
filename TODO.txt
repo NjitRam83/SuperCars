@@ -1,0 +1,27 @@
+TODO:
+
+- Car (PlayerCar / OpponentCar)
+
+- PlayerCar
+* Accelerate
+* Brake
+* TurnLeft
+* TurnRight
+* FireForward
+* FireBackward
+
+* CollideWithOpponent
+* CollideWithWall
+
+
+- OpponentCar
+* FindPath
+* FireForward
+* FireBackward
+
+* CollideWithWall
+
+
+- TrackPiece
+* Hitbox
+* CollideWithCar
