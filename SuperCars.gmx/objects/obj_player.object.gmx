@@ -187,10 +187,11 @@ image_angle += turnspeed;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with (instance_create(x, y, obj_rockets))
+            <string>with (instance_create(x, y , obj_rockets))
 {
     direction = other.direction;
     image_angle = other.image_angle;
+    parent_car_id = other.id;
 }
 </string>
           </argument>
@@ -219,6 +220,7 @@ image_angle += turnspeed;
     speed *= -1;
     direction = other.direction;
     image_angle = other.image_angle - 180;
+    parent_car_id = other.id;
 }
 </string>
           </argument>
