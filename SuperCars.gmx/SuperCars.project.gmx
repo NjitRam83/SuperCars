@@ -21,7 +21,7 @@
     <script>scripts\scr_determine_collision_winner.gml</script>
     <script>scripts\scr_direction_to_quadrant.gml</script>
     <script>scripts\scr_set_speed_after_collision.gml</script>
-    <script>scripts\scr_collide_with_wall.gml</script>
+    <script>scripts\scr_collide_with_wall_blunt.gml</script>
     <script>scripts\scr_rocket_explode.gml</script>
   </scripts>
   <objects name="objects">
