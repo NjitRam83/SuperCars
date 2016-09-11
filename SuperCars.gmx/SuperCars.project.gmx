@@ -11,6 +11,7 @@
     <sprite>sprites\spr_wall_horizontal</sprite>
     <sprite>sprites\spr_wall_vertical</sprite>
     <sprite>sprites\spr_rockets</sprite>
+    <sprite>sprites\spr_exploding_rockets</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths">
@@ -21,6 +22,7 @@
     <script>scripts\scr_direction_to_quadrant.gml</script>
     <script>scripts\scr_set_speed_after_collision.gml</script>
     <script>scripts\scr_collide_with_wall.gml</script>
+    <script>scripts\scr_rocket_explode.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_player</object>
@@ -29,6 +31,7 @@
     <object>objects\obj_wall_horizontal</object>
     <object>objects\obj_wall_vertical</object>
     <object>objects\obj_rockets</object>
+    <object>objects\obj_exploding_rockets</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_testlevel</room>
