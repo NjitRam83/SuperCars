@@ -5,23 +5,26 @@ TODO:
 - PlayerCar
 * Accelerate
 * Brake
-* TurnLeft
-* TurnRight
-* FireForward
-* FireBackward
+* Turn Left
+* Turn Right
+* Fire Forward
+* Fire Backward
 
-* CollideWithOpponent
-* CollideWithWall
+* Collide With Opponent
+	+ Easy: PlayerSpeed = 0, OpponentSpeed = 1
+	+ Hard: Increase speed of front car, decrease speed of rear car
+* Collide With Wall
+* Friction
 
 
 - OpponentCar
 * FindPath
-* FireForward
-* FireBackward
+* Fire Forward
+* Fire Backward
 
-* CollideWithWall
+* Collide With Wall
 
 
 - TrackPiece
 * Hitbox
-* CollideWithCar
+* Collide With Car

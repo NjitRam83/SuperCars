@@ -5,9 +5,27 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound"/>
-  <sprites name="sprites"/>
+  <sprites name="sprites">
+    <sprite>sprites\spr_playercar</sprite>
+    <sprite>sprites\spr_opponentcar</sprite>
+  </sprites>
   <backgrounds name="background"/>
-  <paths name="paths"/>
+  <paths name="paths">
+    <path>paths\pth_aipath</path>
+  </paths>
+  <scripts name="scripts">
+    <script>scripts\scr_determine_collision_winner.gml</script>
+    <script>scripts\scr_direction_to_quadrant.gml</script>
+    <script>scripts\scr_set_speed_after_collision.gml</script>
+  </scripts>
+  <objects name="objects">
+    <object>objects\obj_player</object>
+    <object>objects\obj_opponent</object>
+    <object>objects\obj_car</object>
+  </objects>
+  <rooms name="rooms">
+    <room>rooms\rm_testlevel</room>
+  </rooms>
   <help>
     <rtf>help.rtf</rtf>
   </help>
