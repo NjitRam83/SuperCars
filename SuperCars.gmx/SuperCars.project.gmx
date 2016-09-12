@@ -7,13 +7,17 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\spr_playercar</sprite>
+    <sprite>sprites\spr_tyre_part</sprite>
     <sprite>sprites\spr_opponentcar</sprite>
     <sprite>sprites\spr_wall_horizontal</sprite>
     <sprite>sprites\spr_wall_vertical</sprite>
     <sprite>sprites\spr_rockets</sprite>
     <sprite>sprites\spr_exploding_rockets</sprite>
+    <sprite>sprites\spr_smoke_part</sprite>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\bg_tarmac</background>
+  </backgrounds>
   <paths name="paths">
     <path>paths\pth_aipath</path>
   </paths>
@@ -32,8 +36,10 @@
     <object>objects\obj_wall_vertical</object>
     <object>objects\obj_rockets</object>
     <object>objects\obj_exploding_rockets</object>
+    <object>objects\obj_car_physics</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_physics</room>
     <room>rooms\rm_testlevel</room>
   </rooms>
   <help>
