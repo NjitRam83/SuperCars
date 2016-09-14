@@ -60,6 +60,9 @@ nodenudge_y=0; //we will use this variable later to shift the position the car d
 
 alarm[0]=4; //events in this alarm change the speed of our ‘nextspeed’ variable
 
+directionCorrectionSpeed = 2;
+
+
 //Choosing a path for our car to follow
 
 /*
@@ -68,7 +71,7 @@ the same object for each level we can pick a path
 based on the room that object AIcar is in
 */
 
-currentpath=pth_aipath; //set this to the path you created
+currentpath=pth_testTrack; //set this to the path you created
 
 maxpathpoints=path_get_number(currentpath); //maxpathpoints will store the number of points in currentpath
 
@@ -85,6 +88,20 @@ nodearay[i,1]= path_get_point_y(currentpath,i); //y location of first path point
       </action>
     </event>
     <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -107,8 +124,70 @@ These next two lines are based on a code originally posted by Nocturne on an old
 Basically it’s a condensed method of approaching the new angle smoothly…
 */
 
-direction=(direction+(sin(degtorad(point_direction(x,y,nodearay[currentnode,0]+nodenudge_x,nodearay[currentnode,1]+nodenudge_y)-direction))*turnspeed));  //I can’t even explain this magic
-image_angle=(image_angle+(sin(degtorad(direction-image_angle))*turnspeed)); //this will turn the angle of the image towards the chosen direction
+var wantedDirection = (direction+(sin(degtorad(point_direction(x,y,nodearay[currentnode,0]+nodenudge_x,nodearay[currentnode,1]+nodenudge_y)-direction))*turnspeed));  //I can’t even explain this magic
+image_angle=(image_angle+(sin(degtorad(wantedDirection-image_angle))*turnspeed)); //this will turn the angle of the image towards the chosen direction
+
+if(applyNudge)
+{
+    var vxSpeed = lengthdir_x(speed, direction);
+    var vySpeed = lengthdir_y(speed, direction);
+    var vxNudge = lengthdir_x(nudgeSpeed, nudgeDirection);
+    var vyNudge = lengthdir_y(nudgeSpeed, nudgeDirection);
+    
+    var directionAfterNudge = ((speed * direction) + (nudgeSpeed * nudgeDirection)) / (speed + nudgeSpeed);
+    direction = directionAfterNudge;
+    //TODO: Decrease nudge speed;
+
+
+    var directionCorrectionSign = 1;
+    var differenceInDirection = min(abs(wantedDirection - direction), abs(direction - wantedDirection));
+    differenceInDirection = wantedDirection - direction;
+    
+    //Our direction has been changed because of a collision, find out if we need to turn clockwise (-1) or counterclockwise (1) to reach our wanted direction
+    if(differenceInDirection &gt;= 0)
+    {
+        if(differenceInDirection &lt;= 180)
+        {
+            directionCorrectionSign = 1;
+        }
+        else
+        {
+            directionCorrectionSign = -1;
+        }
+    }
+    else
+    {
+        if(differenceInDirection &lt;= 180)
+        {
+            directionCorrectionSign = -1;
+        }
+        else
+        {
+            directionCorrectionSign = 1;
+        }
+    }
+    
+    // If we cannot reach the wanted direction within 1 correctionstep then apply the full correctionstep
+    if(differenceInDirection &gt; directionCorrectionSpeed)
+    {
+        direction = direction + (directionCorrectionSign * directionCorrectionSpeed);
+    }
+    else
+    {
+        direction = wantedDirection;
+        nudgeDirection = 0;
+        nudgeSpeed = 0;
+
+    }
+}
+else
+{
+    direction = wantedDirection;
+    nudgeDirection = 0;
+    nudgeSpeed = 0;
+    applyNudge = 0;
+}
+
 
 //Next we tell the car to speed up or down in relation to the value of our variable ‘nextspeed’ -which is set in the alarm 0 event
 
@@ -130,6 +209,7 @@ and when we reach a distance to that point we change the focus onto the next poi
 through the use of our variable ‘currentnode’
 */
 
+
 if currentnode = maxpathpoints -1  //first we make sure we limit currentnode to the max number of nodes
 {
     currentnode=0; //if it’s maxed out then we loop back to the first node -this is a great place to add a lap count.
@@ -139,6 +219,7 @@ if distance_to_point(nodearay[currentnode,0],nodearay[currentnode,1]) &lt; 16 //
 {
     currentnode+=1; //move on to next node
 }
+
 </string>
           </argument>
         </arguments>
@@ -161,7 +242,7 @@ if distance_to_point(nodearay[currentnode,0],nodearay[currentnode,1]) &lt; 16 //
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scr_set_speed_after_collision(self, other);
+            <string>//scr_set_speed_after_collision(self, other);
 </string>
           </argument>
         </arguments>

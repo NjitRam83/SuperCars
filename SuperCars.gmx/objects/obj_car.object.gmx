@@ -30,6 +30,70 @@ maxspeed = 10;
 acceleration = 1;
 deceleration = 1;
 turnspeed = 5;
+
+nudgeDirection = 0;
+nudgeSpeed = 0;
+applyNudge = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//TODO: Get sprite length of current sprite 
+var halfSpriteLength = 0.5 * sprite_get_width(spr_playercar);
+var xPosToCheck = x + lengthdir_x(speed + halfSpriteLength, direction);
+var yPosToCheck = y + lengthdir_y(speed + halfSpriteLength, direction);
+
+// Would we collide with another car if we would keep on driving at this speed?
+if(place_meeting(xPosToCheck, 
+                 yPosToCheck, 
+                 obj_car))
+{
+    var collidingCar = instance_position(xPosToCheck, yPosToCheck, obj_car);
+    
+    if(collidingCar != noone &amp;&amp; collidingCar.id != self.id)
+    {
+        var xMovementCollidingCar = lengthdir_x(collidingCar.speed, collidingCar.direction);
+        var yMovementCollidingCar = lengthdir_y(collidingCar.speed, collidingCar.direction);
+ 
+        // Would we still collide if the other car also keeps driving at his speed?       
+        if(place_meeting(xPosToCheck + xMovementCollidingCar, 
+                         yPosToCheck + yMovementCollidingCar, 
+                         obj_car))
+         {
+            
+            // Nudge the other car into our driving direction
+            with(collidingCar)
+            {
+                nudgeDirection = other.direction;
+                nudgeSpeed = other.speed;
+                applyNudge = 1;
+            };
+            
+            //We bump into the other car, so decrease our speed
+            speed--;
+
+         }        
+    }
+}                 
+
 </string>
           </argument>
         </arguments>
@@ -106,6 +170,28 @@ if(    (direction &gt; 315 || direction &lt; 45)
     image_angle = direction;          
 }
 </string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_car">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string></string>
           </argument>
         </arguments>
       </action>

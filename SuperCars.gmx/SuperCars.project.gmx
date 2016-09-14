@@ -16,6 +16,7 @@
   <backgrounds name="background"/>
   <paths name="paths">
     <path>paths\pth_aipath</path>
+    <path>paths\pth_testTrack</path>
   </paths>
   <scripts name="scripts">
     <script>scripts\scr_determine_collision_winner.gml</script>
@@ -24,6 +25,7 @@
     <script>scripts\scr_collide_with_wall_blunt.gml</script>
     <script>scripts\scr_rocket_explode.gml</script>
   </scripts>
+  <shaders name="shaders"/>
   <objects name="objects">
     <object>objects\obj_player</object>
     <object>objects\obj_opponent</object>
@@ -34,6 +36,7 @@
     <object>objects\obj_exploding_rockets</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_testTrack</room>
     <room>rooms\rm_testlevel</room>
   </rooms>
   <help>
