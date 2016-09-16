@@ -3,40 +3,76 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
+  <datafiles number="1" name="datafiles"/>
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\spr_playercar</sprite>
-    <sprite>sprites\spr_tyre_part</sprite>
-    <sprite>sprites\spr_opponentcar</sprite>
-    <sprite>sprites\spr_wall_horizontal</sprite>
-    <sprite>sprites\spr_wall_vertical</sprite>
-    <sprite>sprites\spr_rockets</sprite>
-    <sprite>sprites\spr_exploding_rockets</sprite>
-    <sprite>sprites\spr_smoke_part</sprite>
+    <sprites name="vehicles">
+      <sprite>sprites\spr_car_physics</sprite>
+      <sprite>sprites\spr_playercar</sprite>
+      <sprite>sprites\spr_opponentcar</sprite>
+      <sprites name="parts">
+        <sprite>sprites\spr_car_physics_wheel</sprite>
+      </sprites>
+      <sprites name="particles">
+        <sprite>sprites\spr_smoke_part</sprite>
+        <sprite>sprites\spr_tyre_part</sprite>
+      </sprites>
+    </sprites>
+    <sprites name="environment">
+      <sprite>sprites\spr_exploding_rockets</sprite>
+      <sprite>sprites\spr_rockets</sprite>
+      <sprite>sprites\spr_wall_vertical</sprite>
+      <sprite>sprites\spr_wall_horizontal</sprite>
+      <sprite>sprites\spr_crate</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_tarmac</background>
   </backgrounds>
-  <paths name="paths">
-    <path>paths\pth_aipath</path>
-  </paths>
+  <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\scr_determine_collision_winner.gml</script>
     <script>scripts\scr_direction_to_quadrant.gml</script>
     <script>scripts\scr_set_speed_after_collision.gml</script>
     <script>scripts\scr_collide_with_wall_blunt.gml</script>
     <script>scripts\scr_rocket_explode.gml</script>
+    <scripts name="vehicles">
+      <scripts name="car">
+        <script>scripts\car_init.gml</script>
+        <script>scripts\car_update.gml</script>
+        <script>scripts\car_add_wheel.gml</script>
+      </scripts>
+    </scripts>
+    <script>scripts\scr_add_point.gml</script>
+    <scripts name="physics">
+      <script>scripts\get_lateral_velocity.gml</script>
+      <script>scripts\kill_sideway_speed.gml</script>
+    </scripts>
   </scripts>
   <objects name="objects">
-    <object>objects\obj_player</object>
-    <object>objects\obj_opponent</object>
-    <object>objects\obj_car</object>
-    <object>objects\obj_wall_horizontal</object>
-    <object>objects\obj_wall_vertical</object>
-    <object>objects\obj_rockets</object>
-    <object>objects\obj_exploding_rockets</object>
-    <object>objects\obj_car_physics</object>
+    <objects name="vehicles">
+      <object>objects\obj_opponent</object>
+      <object>objects\obj_player</object>
+      <object>objects\obj_car_physics</object>
+      <objects name="parts">
+        <object>objects\obj_car_physics_wheel</object>
+      </objects>
+    </objects>
+    <objects name="environment">
+      <object>objects\obj_wall_horizontal</object>
+      <object>objects\obj_wall_vertical</object>
+      <object>objects\obj_crate</object>
+    </objects>
+    <objects name="base">
+      <object>objects\obj_car</object>
+      <object>objects\obj_solid</object>
+    </objects>
+    <objects name="dynamic">
+      <object>objects\obj_rockets</object>
+      <object>objects\obj_exploding_rockets</object>
+    </objects>
+    <object>objects\obj_main</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_physics</room>
