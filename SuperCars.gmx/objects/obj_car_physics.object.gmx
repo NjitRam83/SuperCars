@@ -119,33 +119,6 @@ car_update(acc,steer_dir * max_wheel_angle);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///update movement variables based on keyboard input
-
-//acc = 1 when vk_up is down, acc = -1 when vk_down is down
-acc = keyboard_check(vk_up) - keyboard_check(vk_down);
-
-//steer_dir = 1 when vk_right is down, steer_dir = -1 when vk_left is down
-steer_dir = keyboard_check(vk_right) - keyboard_check(vk_left);
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
             <string>///Particle Systems
 if(phy_speed &gt; 1){
 

@@ -18,6 +18,7 @@
         <sprite>sprites\spr_smoke_part</sprite>
         <sprite>sprites\spr_tyre_part</sprite>
       </sprites>
+      <sprite>sprites\spr_car_opponent</sprite>
     </sprites>
     <sprites name="environment">
       <sprite>sprites\spr_exploding_rockets</sprite>
@@ -55,6 +56,8 @@
       <object>objects\obj_opponent</object>
       <object>objects\obj_player</object>
       <object>objects\obj_car_physics</object>
+      <object>objects\obj_car_player</object>
+      <object>objects\obj_car_opponent</object>
       <objects name="parts">
         <object>objects\obj_car_physics_wheel</object>
       </objects>
