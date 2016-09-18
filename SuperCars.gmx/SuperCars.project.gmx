@@ -30,6 +30,7 @@
   </sprites>
   <backgrounds name="background">
     <background>background\bg_tarmac</background>
+    <background>background\tiles_tracks_01</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">

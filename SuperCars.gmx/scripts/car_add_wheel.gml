@@ -19,6 +19,7 @@ if(wheels[0] == noone)
     
 //create wheel instance
 wheels[i] = instance_create(x+xoff,y+yoff,idx);
+wheels[i].phy_rotation = other.phy_rotation;
 
 //create joint
 var joint;
